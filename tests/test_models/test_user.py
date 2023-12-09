@@ -10,49 +10,49 @@ import unittest
 
 class TestUserModel(unittest.TestCase):
     '''
-        Testing User class.
+        User class testing.
     '''
 
     def test_user_inherits(self):
-        ''' testing User class that inherits from BaseModel '''
-        first_user = User()
-        self.assertIsInstance(first_user, BaseModel)
+        ''' User class that inherits from BaseModel '''
+        user1 = User()
+        self.assertIsInstance(user1, BaseModel)
 
     def test_user_attributes(self):
-        ''' testing User class attributes '''
+        ''' User class attributes '''
         att = ["email", "password", "first_name", "last_name"]
-        first_user = User()
+        user1 = User()
         for idx in range(0, len(att)):
-            self.assertTrue(att[idx] in first_user.__dir__())
+            self.assertTrue(att[idx] in user1.__dir__())
 
     def test_user_fname_type(self):
-        ''' test the type of user first_name '''
-        first_user = User()
+        ''' user first_name '''
+        user1 = User()
         # get first_name value from first_user object
-        first_name = getattr(first_user, "first_name")
+        user1 = getattr(user1, "first_name")
         # checks the type of first_name value
-        self.assertIsInstance(first_name, str)
+        self.assertIsInstance(user1, str)
 
     def test_user_lname_type(self):
-        ''' test the type of user last_name '''
-        first_user = User()
+        ''' user last_name '''
+        user1 = User()
         # get last_name value from first_user object
-        last_name = getattr(first_user, "last_name")
+        last_user = getattr(user1, "last_name")
         # checks the type of last_name value
-        self.assertIsInstance(last_name, str)
+        self.assertIsInstance(last_user, str)
 
     def test_user_email_type(self):
-        ''' test the type of user email '''
-        first_user = User()
+        ''' user email '''
+        user1 = User()
         # get email value from first_user object
-        email = getattr(first_user, "email")
+        email = getattr(user1, "email")
         # checks the type of email value
         self.assertIsInstance(email, str)
 
     def test_user_password_type(self):
-        ''' test the type of user password '''
-        first_user = User()
+        ''' user password '''
+        user1 = User()
         # get password value from first_user object
-        password = getattr(first_user, "password")
+        password = getattr(user1, "password")
         # checks the type of password value
         self.assertIsInstance(password, str)
