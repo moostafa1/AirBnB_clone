@@ -41,10 +41,10 @@ class FileStorage:
         try:
             with open(FileStorage.__file_path) as f:
                 objdict = json.load(f)
-        except FileNotFoundError:
-            return
+            for val in objdict.values():
+                class_name = val["__class__"]
+                del val["__class__"]
+                self.new(eval(class_name)(**val))
+        except Exception:
+            pass
 
-        for val in objdict.values():
-            class_name = val["__class__"]
-            # del val["__class__"]
-            self.new(eval(class_name)(**val))
