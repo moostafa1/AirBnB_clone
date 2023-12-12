@@ -32,11 +32,8 @@ class FileStorage:
 
     def save(self):
         ''' serializes __objects to the JSON file (path: __file_path) '''
-        filename = self.__file_path
-        data = {}
-        for key, val in self.__objects.items():
-            data[key] = val.to_dict()
-        with open(filename, 'w') as file:
+        data = {k: v.to_dict() for k, v in self.__objects.items()}
+        with open(FileStorage.__file_path, 'w') as file:
             json.dump(data, file)
 
     def reload(self):
@@ -44,9 +41,10 @@ class FileStorage:
         try:
             with open(FileStorage.__file_path) as f:
                 objdict = json.load(f)
-                for val in objdict.values():
-                    class_name = val["__class__"]
-                    del val["__class__"]
-                    self.new(eval(class_name)(**val))
         except FileNotFoundError:
             return
+
+        for val in objdict.values():
+            class_name = val["__class__"]
+            del val["__class__"]
+            self.new(eval(class_name)(**val))
