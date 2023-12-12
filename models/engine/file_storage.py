@@ -46,5 +46,5 @@ class FileStorage:
 
         for val in objdict.values():
             class_name = val["__class__"]
-            del val["__class__"]
+            # del val["__class__"]
             self.new(eval(class_name)(**val))
