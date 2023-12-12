@@ -48,5 +48,5 @@ class FileStorage:
                     class_name = val["__class__"]
                     del val["__class__"]
                     self.new(eval(class_name)(**val))
-        except (IOError, json.JSONDecodeError, FileExistsError) as e:
+        except (IOError, json.JSONDecodeError, FileNotFoundError) as e:
             pass
